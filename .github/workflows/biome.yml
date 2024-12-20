@@ -1,0 +1,21 @@
+name: Biome
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  biome:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Biome
+        uses: mongolyy/reviewdog-action-biome@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          filter_mode: "added"
+          level: error
+          fail_on_error: false

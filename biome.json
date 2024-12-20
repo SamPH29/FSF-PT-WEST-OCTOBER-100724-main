@@ -1,0 +1,80 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+    "organizeImports": {
+      "enabled": false
+    },
+    "files": {
+      "ignore": ["*.test.js", "biome.json", "dist/"]
+    },
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "formatWithErrors": true
+    },
+    "linter": {
+      "enabled": true,
+      "rules": {
+        "recommended": true,
+        "suspicious": {
+          "useAwait": "warn",
+          "noExplicitAny": "off"
+        },
+        "correctness": {
+          "noUndeclaredVariables": "warn",
+          "noUnusedImports": "error",
+          "useHookAtTopLevel": "warn"
+        },
+        "style": {
+          "useShorthandAssign": "warn"
+        }
+      }
+    },
+    "javascript": {
+      "formatter": {
+        "quoteStyle": "single",
+        "jsxQuoteStyle": "single",
+        "trailingComma": "es5"
+      }
+    },
+    "overrides": [
+      {
+        "include": [
+          "01-Class-Content/01-HTML-Git-CSS/**",
+          "01-Class-Content/02-CSS-Bootstrap/**",
+          "01-Class-Content/03-JavaScript/**",
+          "01-Class-Content/04-Web-APIs/**",
+          "01-Class-Content/07-NodeJS/**"
+        ],
+        "linter": {
+          "rules": {
+            "complexity": {
+              "noForEach": "warn",
+              "useArrowFunction": "off",
+              "useOptionalChain": "warn"
+            },
+            "suspicious": {
+              "noRedeclare": "warn"
+            }
+          }
+        }
+      },
+      {
+        "include": ["**/*.cy.*", "**/cypress/**", "**/*.test.*"],
+        "linter": {
+          "rules": {
+            "correctness": {
+              "noUnusedImports": "off",
+              "noUndeclaredVariables": "off"
+            },
+            "style": {
+              "useImportType": "off"
+            },
+            "complexity": {
+              "useLiteralKeys": "off"
+            }
+          }
+        }
+      }
+    ]
+  }
+  
